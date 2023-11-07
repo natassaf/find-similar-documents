@@ -12,10 +12,8 @@ class shingler:
             return self.shingle_hash_start_number - 1
     def create_shingles(self, document): 
         shingles = set()
+        un_shingles = set()
         for i in range(0, len(document)-self.k+1 ):
+            un_shingles.add(document[i:i+self.k])
             shingles.add(self.hash_shingle(document[i:i+self.k]))
-        return shingles
-
-
-    def compate_sets(self,A,B):
-        return len(A & B) / len(A | B)
+        return shingles,un_shingles
